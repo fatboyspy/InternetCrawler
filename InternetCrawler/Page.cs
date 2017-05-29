@@ -14,9 +14,16 @@ namespace InternetCrawler
         Page ParentPage { get; set; }
         PageState State { get; set; }
 
+        public Page(String url, Page parent=null)
+        {
+            URL = url;
+            ParentPage = parent;
+            State = PageState.Pending;
+        }
 
         public override bool Equals(Object page)
         {
+            if (page == null) return false;
             return this.URL.Equals(((Page)page).URL);
         }
         public override int GetHashCode()
